@@ -1,0 +1,5 @@
+{
+    "TEMPERATURE_MIN": 20,
+    "TEMPERATURE_MAX": 50,
+    "UPDATE_INTERVAL": 2
+}

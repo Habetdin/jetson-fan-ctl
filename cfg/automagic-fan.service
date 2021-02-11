@@ -1,0 +1,14 @@
+[Unit]
+Description=Automagic Fan Control
+
+[Service]
+Type=simple
+ExecStartPre=/usr/local/bin/automagic-fan/prescript.sh
+ExecStart=/usr/bin/python3 -u /usr/local/bin/automagic-fan/fancontrol.py
+ExecStopPost=/usr/local/bin/automagic-fan/postscript.sh
+Restart=always
+StandardOutput=journal+console
+User=root
+
+[Install]
+WantedBy=multi-user.target

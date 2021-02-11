@@ -1,0 +1,8 @@
+[Unit]
+Description=Automagic Fan Trigger
+
+[Path]
+PathExists=/sys/devices/pwm-fan/target_pwm
+
+[Install]
+WantedBy=multi-user.target
