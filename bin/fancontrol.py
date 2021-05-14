@@ -25,9 +25,9 @@ except:
     print('Error while loading configuration')
 finally:
     print('Active configuration:')
-    print('TEMPERATURE_MIN=' + str(TEMPERATURE_MIN))
-    print('TEMPERATURE_MAX=' + str(TEMPERATURE_MAX))
-    print('UPDATE_INTERVAL=' + str(UPDATE_INTERVAL))
+    print('TEMPERATURE_MIN={}'.format(TEMPERATURE_MIN))
+    print('TEMPERATURE_MAX={}'.format(TEMPERATURE_MAX))
+    print('UPDATE_INTERVAL={}'.format(UPDATE_INTERVAL))
 
 time.sleep(max(10, UPDATE_INTERVAL))
 with open(FAN_TARGET_PWM, 'w') as f:
