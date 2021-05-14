@@ -34,14 +34,17 @@ with open(FAN_TARGET_PWM, 'w') as f:
    f.write('255')
 time.sleep(max(10, UPDATE_INTERVAL))
 
+last_pwm = None
 while True:
     try:
         with open(THERMAL_SENSOR, 'r') as f:
             temp = float(f.read()) / 1000.0
         pwm = int(255 * (temp-TEMPERATURE_MIN) / (TEMPERATURE_MAX-TEMPERATURE_MIN))
-        pwm = str(min(max(0, pwm), 255))
-        with open(FAN_TARGET_PWM, 'w') as f:
-            f.write(pwm)
+        pwm = min(max(0, pwm), 255)
+        if pwm != last_pwm:
+            with open(FAN_TARGET_PWM, 'w') as f:
+                f.write(str(pwm))
+            last_pwm = pwm
         time.sleep(UPDATE_INTERVAL)
     except:
         pass
